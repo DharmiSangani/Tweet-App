@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Search 
+{% endblock %}
+
+{% block content %}
+<h1>Search</h1>
+<form method="get" action="{% url 'search' %}">
+    {{ form.as_p }}
+    <button type="submit">Search</button>
+</form>
+
+{% if results %}
+    <h2>Results</h2>
+    <ul>
+        {% for tweet in results %}
+            <li>{{ tweet.content }}</li>  <!-- Adjust the fields to match your model -->
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No results found.</p>
+{% endif %}
+{% endblock %}
